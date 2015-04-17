@@ -8,19 +8,19 @@
         {{/each}}
 			</select>
 
-      vs
+			vs
 
-      <select name="teamTwo">
+			<select name="teamTwo">
         {{#each teams}}
-          <option value="{{_id}}">{{name}}</option>
+					<option value="{{_id}}">{{name}}</option>
         {{/each}}
-      </select>
+			</select>
 
-      <button type="submit">Submit</button>
-      <a class="cancel" href="#">Cancel</a>
+			<button type="submit">Submit</button>
+			<a class="cancel" href="#">Cancel</a>
 		</form>
   {{else}}
-    <a href="#" class="create">Create</a>
+		<a href="#" class="create">Create</a>
   {{/if}}
 	<ul>
     {{#each games}}
