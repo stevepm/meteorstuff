@@ -1,6 +1,8 @@
 <template name="layout">
 	<h1>Foosboom</h1>
-  {{> menu}}
+  {{#if currentUser}}
+    {{> menu}}
+  {{/if}}
 
   {{> loginButtons}}
   {{> yield}}
