@@ -35,7 +35,21 @@ Template.games.events({
       completed: false
     };
     gameId = Games.insert(game);
-    Teams.update({_id: teamOneData.id}, {$addToSet: {games: gameId}});
-    Teams.update({_id: teamTwoData.id}, {$addToSet: {games: gameId}});
+    Teams.update({
+      _id: teamOneData.id
+    }, {
+      $addToSet: {
+        games: gameId
+      }
+    });
+
+    Teams.update({
+      _id: teamTwoData.id
+    }, {
+      $addToSet: {
+        games: gameId
+      }
+    });
+    Session.set('creating-game', null);
   }
 });
