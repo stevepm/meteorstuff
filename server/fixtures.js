@@ -1,5 +1,5 @@
 if (Meteor.users.find().count() === 0) {
-  ownerId = Accounts.createUser({
+  var ownerId = Accounts.createUser({
     email: 'j@j.com',
     password: 'matthew'
   })
@@ -22,7 +22,8 @@ if (Games.find().count() === 0) {
     teams: [
       {name: 'Barcelona', id: '1', score: 0, ownerId: ownerId},
       {name: 'Manchester City', id: '2', score: 0, ownerId: ownerId}
-    ]
+    ],
+    ownerId: ownerId
   };
   Games.insert(game);
 }

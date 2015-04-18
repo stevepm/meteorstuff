@@ -1,0 +1,18 @@
+<template name="menu">
+	<ul>
+		<li>
+      {{#if isActive}}
+				Games
+      {{else}}
+				<a href="/">Games</a>
+      {{/if}}
+		</li>
+		<li>
+      {{#if isActive "teams"}}
+				Teams
+      {{else}}
+				<a href="/teams">Teams</a>
+      {{/if}}
+		</li>
+	</ul>
+</template>
