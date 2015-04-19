@@ -12,3 +12,6 @@ underscore
 stylus
 sanjo:jasmine
 velocity:html-reporter
+
+
+npm-container
