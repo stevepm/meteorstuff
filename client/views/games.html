@@ -23,8 +23,10 @@
 		<a href="#" class="create">Create</a>
   {{/if}}
 	<ul>
-    {{#each games}}
-      {{> game}}
-    {{/each}}
+    {{#transition}}
+      {{#each games}}
+        {{> game}}
+      {{/each}}
+    {{/transition}}
 	</ul>
 </template>
