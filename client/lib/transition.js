@@ -5,16 +5,36 @@ OFFSCREEN_CLASS = 'off';
 EVENTS = 'webkitTransitionEnd oTransitionEnd transitionEnd msTransitionEnd transitionend';
 
 hooks = {
+  transitioning: false,
   insertElement: function (node, next) {
-    $(node).addClass(OFFSCREEN_CLASS).insertBefore(next);
-    return Deps.afterFlush(function () {
-      return $(node).removeClass(OFFSCREEN_CLASS);
-    });
+    var finish, insert;
+    insert = function(){
+      $(node).addClass('fadeIn');
+      $(node).insertBefore(next);
+      return Meteor.setTimeout(finish, 500);
+    };
+
+    finish = function(){
+      return $(node).removeClass(settings.onscreenClass);
+    };
+
+    if (this.transitioning){
+      return Meteor.setTimeout(insert, 500);
+    } else {
+      return insert();
+    }
   },
   removeElement: function (node) {
-    return $(node).addClass(OFFSCREEN_CLASS).on(EVENTS, function () {
-      return $(node).remove();
-    });
+    var remove;
+    remove = (function(_this){
+      return function(){
+        _this.transitioning = false;
+        return $(node).remove();
+      }
+    })(this);
+    $(node).addClass('fadeOut');
+    this.transitioning = true;
+    return Meteor.setTimeout(remove, 500);
   }
 };
 

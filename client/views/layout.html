@@ -5,5 +5,9 @@
   {{/if}}
 
   {{> loginButtons}}
-  {{> yield}}
+	<div style="width: 400px">
+    {{#transition}}
+      {{> yield}}
+    {{/transition}}
+	</div>
 </template>
